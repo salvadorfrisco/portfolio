@@ -115,7 +115,11 @@ export default function DetalhesProjeto({
         </div>
 
         <div className="overflow-hidden rounded-lg bg-white shadow-md">
-          <div className="aspect-video bg-gray-200">
+          <div
+            className="aspect-video bg-gray-200 hover:cursor-pointer"
+            title="Clique para abrir o site"
+            onClick={() => window.open(project.siteUrl)}
+          >
             <Image
               src={project.imageUrl}
               alt={project.title}
