@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
       if (!project) {
         return NextResponse.json(
           { error: "Projeto não encontrado" },
-          { status: 404 }
+          { status: 404 },
         );
       }
       return NextResponse.json(project);
@@ -24,9 +24,10 @@ export async function GET(request: NextRequest) {
     const projects = await projectUseCases.getAllProjects();
     return NextResponse.json(projects);
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Erro interno do servidor" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -39,7 +40,7 @@ export async function POST(request: NextRequest) {
     if (!title || !description || !imageUrl || !technologies) {
       return NextResponse.json(
         { error: "Todos os campos são obrigatórios" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -47,14 +48,15 @@ export async function POST(request: NextRequest) {
       title,
       description,
       imageUrl,
-      technologies
+      technologies,
     );
 
     return NextResponse.json(project, { status: 201 });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Erro interno do servidor" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -67,7 +69,7 @@ export async function PUT(request: NextRequest) {
     if (!id) {
       return NextResponse.json(
         { error: "ID do projeto é obrigatório" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -77,7 +79,7 @@ export async function PUT(request: NextRequest) {
     if (!title || !description || !imageUrl || !technologies) {
       return NextResponse.json(
         { error: "Todos os campos são obrigatórios" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -86,14 +88,15 @@ export async function PUT(request: NextRequest) {
       title,
       description,
       imageUrl,
-      technologies
+      technologies,
     );
 
     return NextResponse.json(project);
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Erro interno do servidor" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -106,16 +109,17 @@ export async function DELETE(request: NextRequest) {
     if (!id) {
       return NextResponse.json(
         { error: "ID do projeto é obrigatório" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     await projectUseCases.deleteProject(parseInt(id));
     return NextResponse.json({ message: "Projeto excluído com sucesso" });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Erro interno do servidor" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

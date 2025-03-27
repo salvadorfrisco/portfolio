@@ -44,7 +44,15 @@ export class MySQLProjectRepository implements IProjectRepository {
       GROUP BY p.id
     `);
 
-    return (rows as any[]).map((row) => ({
+    type ProjectRow = {
+      id: number;
+      title: string;
+      description: string;
+      image_url: string;
+      technologies: string | null;
+    };
+
+    return (rows as ProjectRow[]).map((row) => ({
       id: row.id,
       title: row.title,
       description: row.description,
@@ -62,10 +70,18 @@ export class MySQLProjectRepository implements IProjectRepository {
       WHERE p.id = ?
       GROUP BY p.id
     `,
-      [id]
+      [id],
     );
 
-    const row = (rows as any[])[0];
+    const row = (
+      rows as {
+        id: number;
+        title: string;
+        description: string;
+        image_url: string;
+        technologies: string | null;
+      }[]
+    )[0];
     if (!row) return null;
 
     return {
@@ -84,16 +100,17 @@ export class MySQLProjectRepository implements IProjectRepository {
 
       const [result] = await connection.execute(
         "INSERT INTO projects (title, description, image_url) VALUES (?, ?, ?)",
-        [project.title, project.description, project.imageUrl]
+        [project.title, project.description, project.imageUrl],
       );
 
-      const projectId = (result as any).insertId;
+      type InsertResult = { insertId: number };
+      const projectId = (result as InsertResult).insertId;
 
       if (project.technologies.length > 0) {
         const values = project.technologies.map((name) => [projectId, name]);
         await connection.query(
           "INSERT INTO technologies (project_id, name) VALUES ?",
-          [values]
+          [values],
         );
       }
 
@@ -121,19 +138,19 @@ export class MySQLProjectRepository implements IProjectRepository {
 
       await connection.execute(
         "UPDATE projects SET title = ?, description = ?, image_url = ? WHERE id = ?",
-        [project.title, project.description, project.imageUrl, id]
+        [project.title, project.description, project.imageUrl, id],
       );
 
       await connection.execute(
         "DELETE FROM technologies WHERE project_id = ?",
-        [id]
+        [id],
       );
 
       if (project.technologies.length > 0) {
         const values = project.technologies.map((name) => [id, name]);
         await connection.query(
           "INSERT INTO technologies (project_id, name) VALUES ?",
-          [values]
+          [values],
         );
       }
 
@@ -161,7 +178,7 @@ export class MySQLProjectRepository implements IProjectRepository {
 
       await connection.execute(
         "DELETE FROM technologies WHERE project_id = ?",
-        [id]
+        [id],
       );
       await connection.execute("DELETE FROM projects WHERE id = ?", [id]);
 
