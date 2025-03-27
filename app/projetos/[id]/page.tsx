@@ -59,7 +59,7 @@ export default function DetalhesProjeto({
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="text-center">Carregando...</div>
+        <div className="text-center">Carregando..</div>
       </div>
     );
   }
