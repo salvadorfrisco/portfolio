@@ -150,6 +150,21 @@ export default function Home() {
                 Adicionar Novo Projeto
               </Link>
             )}
+            <Link
+              href="https://wa.me/5511947145417?text=Olá! Gostaria de saber mais informações sobre os projetos disponíveis."
+              aria-label="WhatsApp"
+              target="_blank"
+              className="h-9 w-9 rounded-full transition hover:bg-lime-500"
+              title="Entre em contato pelo WhatsApp"
+            >
+              <Image
+                src="/logo_whatsapp-t.png"
+                alt="Whatsapp Logo"
+                width={36}
+                height={36}
+                className="h-full w-full object-contain"
+              />
+            </Link>
           </div>
 
           {newProjectButton ? (
