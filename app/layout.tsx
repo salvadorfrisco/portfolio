@@ -6,31 +6,16 @@ import Script from "next/script";
 // import ClientBuildingProvider from "./_components/ClientBuildingProvider";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://soniadacyrela.com.br"), // URL base do seu site
-  keywords: [
-    "Cyrela",
-    "Living",
-    "Apartamento",
-    "Studio",
-    "Apartamentos",
-    "Studios",
-    "Compra",
-    "Venda",
-    "Imovel",
-    "Imóvel",
-    "Imóveis",
-    "Lançamento",
-    "Na planta",
-    "São Paulo",
-  ],
+  metadataBase: new URL("https://frisco.dev.br"), // URL base do seu site
+  keywords: ["Portfolio", "Portifolio", "Portfólio", "Portifólio", "Projetos"],
   title: {
-    default: "Studios e apartamentos",
-    template: `%s | Sonia da Cyrela`,
+    default: "Portfolio de Projetos",
+    template: `Portfolio de Projetos | %s`,
   },
   openGraph: {
-    title: "Studios e apartamentos",
+    title: "Portfolio de Projetos",
     description:
-      "Encontre studios e apartamentos Living Cyrela, imóveis nas melhores regiões de São Paulo, planos exclusivos para venda, pronta entrega, lançamentos e na planta.",
+      "Portfolio de Projetos desenvolvidos por Frisco Consultoria e Desenvolvimento",
   },
 };
 

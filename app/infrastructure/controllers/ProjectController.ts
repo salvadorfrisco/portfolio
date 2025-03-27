@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { title, description, imageUrl, technologies } = body;
+    const { title, description, siteUrl, imageUrl, technologies } = body;
 
     if (!title || !description || !imageUrl || !technologies) {
       return NextResponse.json(
@@ -47,6 +47,7 @@ export async function POST(request: NextRequest) {
     const project = await projectUseCases.createProject(
       title,
       description,
+      siteUrl,
       imageUrl,
       technologies,
     );
@@ -74,7 +75,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { title, description, imageUrl, technologies } = body;
+    const { title, description, siteUrl, imageUrl, technologies } = body;
 
     if (!title || !description || !imageUrl || !technologies) {
       return NextResponse.json(
@@ -87,6 +88,7 @@ export async function PUT(request: NextRequest) {
       parseInt(id),
       title,
       description,
+      siteUrl,
       imageUrl,
       technologies,
     );

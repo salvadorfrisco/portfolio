@@ -15,10 +15,17 @@ export class ProjectUseCases {
   async createProject(
     title: string,
     description: string,
+    siteUrl: string,
     imageUrl: string,
-    technologies: string[]
+    technologies: string[],
   ): Promise<Project> {
-    const project = Project.create(title, description, imageUrl, technologies);
+    const project = Project.create(
+      title,
+      description,
+      siteUrl,
+      imageUrl,
+      technologies,
+    );
     return this.projectRepository.create(project);
   }
 
@@ -26,10 +33,17 @@ export class ProjectUseCases {
     id: number,
     title: string,
     description: string,
+    siteUrl: string,
     imageUrl: string,
-    technologies: string[]
+    technologies: string[],
   ): Promise<Project> {
-    const project = Project.create(title, description, imageUrl, technologies);
+    const project = Project.create(
+      title,
+      description,
+      siteUrl,
+      imageUrl,
+      technologies,
+    );
     return this.projectRepository.update(id, project);
   }
 

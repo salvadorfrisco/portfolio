@@ -48,6 +48,7 @@ export class MySQLProjectRepository implements IProjectRepository {
       id: number;
       title: string;
       description: string;
+      site_url: string;
       image_url: string;
       technologies: string | null;
     };
@@ -56,6 +57,7 @@ export class MySQLProjectRepository implements IProjectRepository {
       id: row.id,
       title: row.title,
       description: row.description,
+      siteUrl: row.site_url,
       imageUrl: row.image_url,
       technologies: row.technologies ? row.technologies.split(",") : [],
     }));
@@ -78,6 +80,7 @@ export class MySQLProjectRepository implements IProjectRepository {
         id: number;
         title: string;
         description: string;
+        siteUrl: string;
         image_url: string;
         technologies: string | null;
       }[]
@@ -88,6 +91,7 @@ export class MySQLProjectRepository implements IProjectRepository {
       id: row.id,
       title: row.title,
       description: row.description,
+      siteUrl: row.siteUrl,
       imageUrl: row.image_url,
       technologies: row.technologies ? row.technologies.split(",") : [],
     };
@@ -99,8 +103,8 @@ export class MySQLProjectRepository implements IProjectRepository {
       await connection.beginTransaction();
 
       const [result] = await connection.execute(
-        "INSERT INTO projects (title, description, image_url) VALUES (?, ?, ?)",
-        [project.title, project.description, project.imageUrl],
+        "INSERT INTO projects (title, description, site_url, image_url) VALUES (?, ?, ?)",
+        [project.title, project.description, project.siteUrl, project.imageUrl],
       );
 
       type InsertResult = { insertId: number };
@@ -120,6 +124,7 @@ export class MySQLProjectRepository implements IProjectRepository {
         id: projectId,
         title: project.title,
         description: project.description,
+        siteUrl: project.siteUrl,
         imageUrl: project.imageUrl,
         technologies: project.technologies,
       };
@@ -137,8 +142,14 @@ export class MySQLProjectRepository implements IProjectRepository {
       await connection.beginTransaction();
 
       await connection.execute(
-        "UPDATE projects SET title = ?, description = ?, image_url = ? WHERE id = ?",
-        [project.title, project.description, project.imageUrl, id],
+        "UPDATE projects SET title = ?, description = ?, site_url = ?, image_url = ? WHERE id = ?",
+        [
+          project.title,
+          project.description,
+          project.siteUrl,
+          project.imageUrl,
+          id,
+        ],
       );
 
       await connection.execute(
@@ -160,6 +171,7 @@ export class MySQLProjectRepository implements IProjectRepository {
         id,
         title: project.title,
         description: project.description,
+        siteUrl: project.siteUrl,
         imageUrl: project.imageUrl,
         technologies: project.technologies,
       };

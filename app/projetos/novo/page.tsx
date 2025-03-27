@@ -14,6 +14,7 @@ export default function NovoProjeto() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    siteUrl: "",
     technologies: "",
     imageUrl: "",
   });
@@ -84,6 +85,19 @@ export default function NovoProjeto() {
                   setFormData({ ...formData, description: e.target.value })
                 }
                 required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="siteUrl">Site</Label>
+              <input
+                type="url"
+                id="siteUrl"
+                value={formData.siteUrl}
+                onChange={(e) =>
+                  setFormData({ ...formData, siteUrl: e.target.value })
+                }
+                className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 

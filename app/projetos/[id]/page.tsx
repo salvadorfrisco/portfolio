@@ -108,6 +108,9 @@ export default function DetalhesProjeto({
             <h2 className="mb-4 text-xl font-semibold">Descrição</h2>
             <p className="mb-6 text-gray-600">{project.description}</p>
 
+            <h2 className="mb-4 text-xl font-semibold">Site</h2>
+            <p className="mb-6 text-gray-600">{project.siteUrl}</p>
+
             <h2 className="mb-4 text-xl font-semibold">Tecnologias</h2>
             <div className="mb-6 flex flex-wrap gap-2">
               {project.technologies.map((tech) => (

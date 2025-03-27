@@ -13,6 +13,7 @@ export default function EditarProjeto({
     title: "",
     description: "",
     technologies: "",
+    siteUrl: "",
     imageUrl: "",
   });
   const [error, setError] = useState<string | null>(null);
@@ -33,6 +34,7 @@ export default function EditarProjeto({
           title: project.title,
           description: project.description,
           technologies: project.technologies.join(", "),
+          siteUrl: project.siteUrl,
           imageUrl: project.imageUrl,
         });
       } catch (err) {
@@ -124,6 +126,24 @@ export default function EditarProjeto({
               rows={4}
               className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="siteUrl"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
+              Site
+            </label>
+            <input
+              type="url"
+              id="siteUrl"
+              value={formData.siteUrl}
+              onChange={(e) =>
+                setFormData({ ...formData, siteUrl: e.target.value })
+              }
+              className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
