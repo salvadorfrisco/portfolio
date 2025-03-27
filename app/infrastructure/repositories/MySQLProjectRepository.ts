@@ -50,6 +50,7 @@ export class MySQLProjectRepository implements IProjectRepository {
       description: string;
       site_url: string;
       image_url: string;
+      view_order: number;
       technologies: string | null;
     };
 
@@ -59,6 +60,7 @@ export class MySQLProjectRepository implements IProjectRepository {
       description: row.description,
       siteUrl: row.site_url,
       imageUrl: row.image_url,
+      viewOrder: row.view_order,
       technologies: row.technologies ? row.technologies.split(",") : [],
     }));
   }
@@ -82,6 +84,7 @@ export class MySQLProjectRepository implements IProjectRepository {
         description: string;
         site_url: string;
         image_url: string;
+        view_order: number;
         technologies: string | null;
       }[]
     )[0];
@@ -93,6 +96,7 @@ export class MySQLProjectRepository implements IProjectRepository {
       description: row.description,
       siteUrl: row.site_url,
       imageUrl: row.image_url,
+      viewOrder: row.view_order,
       technologies: row.technologies ? row.technologies.split(",") : [],
     };
   }
@@ -126,6 +130,7 @@ export class MySQLProjectRepository implements IProjectRepository {
         description: project.description,
         siteUrl: project.siteUrl,
         imageUrl: project.imageUrl,
+        viewOrder: project.viewOrder,
         technologies: project.technologies,
       };
     } catch (error) {
@@ -173,6 +178,7 @@ export class MySQLProjectRepository implements IProjectRepository {
         description: project.description,
         siteUrl: project.siteUrl,
         imageUrl: project.imageUrl,
+        viewOrder: project.viewOrder,
         technologies: project.technologies,
       };
     } catch (error) {
@@ -195,6 +201,23 @@ export class MySQLProjectRepository implements IProjectRepository {
       await connection.execute("DELETE FROM projects WHERE id = ?", [id]);
 
       await connection.commit();
+    } catch (error) {
+      await connection.rollback();
+      throw error;
+    } finally {
+      connection.release();
+    }
+  }
+
+  async reorder(projectIds: number[]): Promise<void> {
+    const connection = await this.pool.getConnection();
+    try {
+      for (let i = 0; i < projectIds.length; i++) {
+        await connection.execute(
+          "UPDATE projects SET view_order = ? WHERE id = ?",
+          [i, projectIds[i]],
+        );
+      }
     } catch (error) {
       await connection.rollback();
       throw error;

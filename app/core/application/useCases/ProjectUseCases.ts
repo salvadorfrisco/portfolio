@@ -17,6 +17,7 @@ export class ProjectUseCases {
     description: string,
     siteUrl: string,
     imageUrl: string,
+    viewOrder: number,
     technologies: string[],
   ): Promise<Project> {
     const project = Project.create(
@@ -24,6 +25,7 @@ export class ProjectUseCases {
       description,
       siteUrl,
       imageUrl,
+      viewOrder,
       technologies,
     );
     return this.projectRepository.create(project);
@@ -35,6 +37,7 @@ export class ProjectUseCases {
     description: string,
     siteUrl: string,
     imageUrl: string,
+    viewOrder: number,
     technologies: string[],
   ): Promise<Project> {
     const project = Project.create(
@@ -42,6 +45,7 @@ export class ProjectUseCases {
       description,
       siteUrl,
       imageUrl,
+      viewOrder,
       technologies,
     );
     return this.projectRepository.update(id, project);

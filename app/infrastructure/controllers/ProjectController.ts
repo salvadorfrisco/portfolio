@@ -35,7 +35,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { title, description, siteUrl, imageUrl, technologies } = body;
+    const { title, description, siteUrl, imageUrl, viewOrder, technologies } =
+      body;
 
     if (!title || !description || !imageUrl || !technologies) {
       return NextResponse.json(
@@ -49,6 +50,7 @@ export async function POST(request: NextRequest) {
       description,
       siteUrl,
       imageUrl,
+      viewOrder,
       technologies,
     );
 
@@ -75,7 +77,8 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { title, description, siteUrl, imageUrl, technologies } = body;
+    const { title, description, siteUrl, imageUrl, viewOrder, technologies } =
+      body;
 
     if (!title || !description || !imageUrl || !technologies) {
       return NextResponse.json(
@@ -90,6 +93,7 @@ export async function PUT(request: NextRequest) {
       description,
       siteUrl,
       imageUrl,
+      viewOrder,
       technologies,
     );
 
