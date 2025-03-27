@@ -80,7 +80,7 @@ export class MySQLProjectRepository implements IProjectRepository {
         id: number;
         title: string;
         description: string;
-        siteUrl: string;
+        site_url: string;
         image_url: string;
         technologies: string | null;
       }[]
@@ -91,7 +91,7 @@ export class MySQLProjectRepository implements IProjectRepository {
       id: row.id,
       title: row.title,
       description: row.description,
-      siteUrl: row.siteUrl,
+      siteUrl: row.site_url,
       imageUrl: row.image_url,
       technologies: row.technologies ? row.technologies.split(",") : [],
     };
