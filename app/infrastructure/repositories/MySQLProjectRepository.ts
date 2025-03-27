@@ -103,7 +103,7 @@ export class MySQLProjectRepository implements IProjectRepository {
       await connection.beginTransaction();
 
       const [result] = await connection.execute(
-        "INSERT INTO projects (title, description, site_url, image_url) VALUES (?, ?, ?)",
+        "INSERT INTO projects (title, description, site_url, image_url) VALUES (?, ?, ?, ?)",
         [project.title, project.description, project.siteUrl, project.imageUrl],
       );
 
