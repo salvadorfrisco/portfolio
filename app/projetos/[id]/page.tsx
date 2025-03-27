@@ -136,7 +136,7 @@ export default function DetalhesProjeto({
               onClick={() => window.open(project.siteUrl)}
               className="mb-6 cursor-pointer text-gray-600 underline hover:text-blue-600"
             >
-              {project.siteUrl.replace("https:", "").replaceAll("/", "")}
+              {project.siteUrl.replace("https://", "")}
             </p>
 
             <h2 className="mb-4 text-xl font-semibold">Tecnologias</h2>
