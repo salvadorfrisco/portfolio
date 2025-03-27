@@ -4,6 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 // import { Header } from "./_components";
 // import ClientBuildingProvider from "./_components/ClientBuildingProvider";
+import { ProjectProvider } from "./contexts/ProjectContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://frisco.dev.br"), // URL base do seu site
@@ -72,10 +73,12 @@ export default function RootLayout({
           src="https://player.vimeo.com/api/player.js"
           strategy="lazyOnload"
         />
-        {/* <ClientBuildingProvider> */}
-        {/* <Header /> */}
-        {children}
-        {/* </ClientBuildingProvider> */}
+        <ProjectProvider>
+          {/* <ClientBuildingProvider> */}
+          {/* <Header /> */}
+          {children}
+          {/* </ClientBuildingProvider> */}
+        </ProjectProvider>
       </body>
     </html>
   );

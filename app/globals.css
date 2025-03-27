@@ -78,6 +78,7 @@
 
 body {
   font-family: var(--font-primary);
+  background-image: url("/background.png");
 }
 
 .font-secondary {
@@ -94,6 +95,7 @@ body {
     top 1.5s ease,
     transform 1.5s ease;
 }
+
 h1 {
   font-weight: bolder;
   font-size: 2.5rem;
@@ -281,4 +283,13 @@ p {
     opacity: 0.8;
     transform: scale(1.02);
   }
+}
+
+.cursor-wait {
+  cursor: wait !important;
+}
+
+/* Opcional: adicionar uma classe específica para quando estiver navegando */
+.navigating {
+  cursor: wait !important;
 }

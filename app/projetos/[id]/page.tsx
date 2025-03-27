@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { Project } from "../../core/domain/entities/Project";
+import { useProject } from "@/app/contexts/ProjectContext";
+import { Button } from "@/app/components/Button";
 
 export default function DetalhesProjeto({
   params,
@@ -14,6 +17,13 @@ export default function DetalhesProjeto({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [id, setId] = useState<string | null>(null);
+  const { newProjectButton } = useProject();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleBack = () => {
+    setIsLoading(true);
+    router.back();
+  };
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -36,6 +46,11 @@ export default function DetalhesProjeto({
 
     fetchProject();
   }, [params]);
+
+  useEffect(() => {
+    document.body.style.cursor = "default";
+    document.documentElement.style.cursor = "default";
+  }, []);
 
   const handleDelete = async () => {
     if (window.confirm("Tem certeza que deseja excluir este projeto?")) {
@@ -78,28 +93,34 @@ export default function DetalhesProjeto({
     <div className="container mx-auto px-4 py-8">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl font-bold">{project.title}</h1>
+          <h1 className="text-3xl font-bold text-gray-200">{project.title}</h1>
           <div className="flex gap-4">
-            <button
-              onClick={() => router.push(`/projetos/${id}/editar`)}
-              className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
-            >
-              Editar
-            </button>
-            <button
-              onClick={handleDelete}
-              className="rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700"
-            >
-              Excluir
-            </button>
+            {newProjectButton && (
+              <>
+                <button
+                  onClick={() => router.push(`/projetos/${id}/editar`)}
+                  className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                >
+                  Editar
+                </button>
+                <button
+                  onClick={handleDelete}
+                  className="rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700"
+                >
+                  Excluir
+                </button>
+              </>
+            )}
           </div>
         </div>
 
         <div className="overflow-hidden rounded-lg bg-white shadow-md">
           <div className="aspect-video bg-gray-200">
-            <img
+            <Image
               src={project.imageUrl}
               alt={project.title}
+              width={500}
+              height={282}
               className="h-full w-full object-cover"
             />
           </div>
@@ -131,12 +152,9 @@ export default function DetalhesProjeto({
             </div>
 
             <div className="flex gap-4">
-              <button
-                onClick={() => router.push("/")}
-                className="rounded-md bg-gray-200 px-4 py-2 text-gray-700 hover:bg-gray-300"
-              >
+              <Button onClick={handleBack} isLoading={isLoading}>
                 Voltar
-              </button>
+              </Button>
             </div>
           </div>
         </div>
