@@ -24,9 +24,9 @@ const nextConfig = {
 
     return config;
   },
-  assetPrefix: process.env.NODE_ENV === "production" ? "/imoveis/" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/" : "",
   images: {
-    domains: ["soniadacyrela.com.br", "localhost", "localhost:3004"],
+    domains: ["frisco.dev.br", "localhost", "localhost:3010"],
   },
   experimental: {
     turbo: {

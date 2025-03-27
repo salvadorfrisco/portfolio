@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*", // Define que essas regras se aplicam a todos os agentes de usuário (crawlers)
-      allow: ["/", "/imoveis"], // Permite o acesso aos diretórios raiz, blog, projects e articles do site
+      allow: ["/"], // Permite o acesso aos diretórios raiz, blog, projects e articles do site
       disallow: [], // Não impõe restrições adicionais de acesso
     },
     sitemap: `${baseUrl}/sitemap.xml`, // Define o local do sitemap.xml do site
