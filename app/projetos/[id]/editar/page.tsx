@@ -144,6 +144,7 @@ export default function EditarProjeto({
                 setFormData({ ...formData, siteUrl: e.target.value })
               }
               className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
             />
           </div>
 

@@ -109,7 +109,14 @@ export default function DetalhesProjeto({
             <p className="mb-6 text-gray-600">{project.description}</p>
 
             <h2 className="mb-4 text-xl font-semibold">Site</h2>
-            <p className="mb-6 text-gray-600">{project.siteUrl}</p>
+
+            <p
+              title="Clique para abrir o site"
+              onClick={() => window.open(project.siteUrl)}
+              className="mb-6 cursor-pointer text-gray-600 underline hover:text-blue-600"
+            >
+              {project.siteUrl.replace("https:", "").replaceAll("/", "")}
+            </p>
 
             <h2 className="mb-4 text-xl font-semibold">Tecnologias</h2>
             <div className="mb-6 flex flex-wrap gap-2">
