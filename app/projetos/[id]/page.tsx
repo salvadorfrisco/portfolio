@@ -22,7 +22,7 @@ export default function DetalhesProjeto({
 
   const handleBack = () => {
     setIsLoading(true);
-    router.back();
+    router.push("/");
   };
 
   useEffect(() => {

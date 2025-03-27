@@ -196,7 +196,7 @@ export default function EditarProjeto({
             </button>
             <button
               type="button"
-              onClick={() => router.push(`/projetos/${id}`)}
+              onClick={() => router.push("/")}
               className="rounded-md bg-gray-200 px-4 py-2 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
               Cancelar
