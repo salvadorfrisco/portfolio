@@ -78,7 +78,7 @@
 
 body {
   font-family: var(--font-primary);
-  background-image: url("/background.png");
+  background-image: url("/background_lightgray.png");
 }
 
 .font-secondary {
@@ -90,6 +90,7 @@ body {
     text-wrap: balance;
   }
 }
+
 .header {
   transition:
     top 1.5s ease,

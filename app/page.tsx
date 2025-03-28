@@ -134,10 +134,12 @@ export default function Home() {
     <ProjectProvider>
       <main className="min-h-screen">
         <div className="container mx-auto px-4 py-8">
-          <div className="mb-8 flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-gray-200">Projetos</h1>
+          <div className="mb-3 flex items-center justify-between">
+            <h1 className="text-4xl font-thin text-gray-200">
+              Portfólio de Projetos
+            </h1>
             <span
-              className="ml-10 text-lg font-thin text-cyan-600"
+              className="ml-10 text-lg text-[#929191]"
               onDoubleClick={toggleNewProjectButton}
             >
               ...
@@ -150,21 +152,30 @@ export default function Home() {
                 Adicionar Novo Projeto
               </Link>
             )}
-            <Link
-              href="https://wa.me/5511947145417?text=Olá! Gostaria de saber mais informações sobre os projetos disponíveis."
-              aria-label="WhatsApp"
-              target="_blank"
-              className="h-9 w-9 rounded-full transition hover:bg-lime-500"
-              title="Entre em contato pelo WhatsApp"
-            >
+            <div className="flex items-center justify-between">
               <Image
-                src="/logo_whatsapp-t.png"
-                alt="Whatsapp Logo"
-                width={36}
-                height={36}
+                src="/logo_sf.png"
+                alt="Logo SF tech"
+                width={120}
+                height={60}
                 className="h-full w-full object-contain"
               />
-            </Link>
+              <Link
+                href="https://wa.me/5511947145417?text=Olá! Gostaria de saber mais informações sobre os projetos disponíveis."
+                aria-label="WhatsApp"
+                target="_blank"
+                className="h-9 w-9 rounded-full transition hover:bg-lime-500"
+                title="Entre em contato pelo WhatsApp"
+              >
+                <Image
+                  src="/logo_whatsapp-t.png"
+                  alt="Whatsapp Logo"
+                  width={36}
+                  height={36}
+                  className="h-full w-full object-contain"
+                />
+              </Link>
+            </div>
           </div>
 
           {newProjectButton ? (
