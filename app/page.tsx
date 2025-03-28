@@ -164,14 +164,14 @@ export default function Home() {
                 href="https://wa.me/5511947145417?text=Olá! Gostaria de saber mais informações sobre os projetos disponíveis."
                 aria-label="WhatsApp"
                 target="_blank"
-                className="h-9 w-9 rounded-full transition hover:bg-lime-500"
+                className="h-10 w-10 rounded-full transition hover:scale-125"
                 title="Entre em contato pelo WhatsApp"
               >
                 <Image
                   src="/logo_whatsapp-t.png"
                   alt="Whatsapp Logo"
-                  width={36}
-                  height={36}
+                  width={38}
+                  height={38}
                   className="h-full w-full object-contain"
                 />
               </Link>
