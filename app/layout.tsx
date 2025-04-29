@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Portfolio de Projetos",
-    description: "Portfolio de Projetos de Salvador Frisco",
+    description: "Salvador Frisco",
   },
 };
 
