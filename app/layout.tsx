@@ -15,8 +15,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Portfolio de Projetos",
-    description:
-      "Portfolio de Projetos desenvolvidos por Frisco Consultoria e Desenvolvimento",
+    description: "Portfolio de Projetos de Salvador Frisco",
   },
 };
 
