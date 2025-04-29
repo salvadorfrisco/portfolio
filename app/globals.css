@@ -78,7 +78,9 @@
 
 body {
   font-family: var(--font-primary);
-  background-image: url("/background_lightgray.png");
+  background-image:
+    linear-gradient(to right, rgba(225, 225, 225, 0.8), rgba(0, 0, 0, 0.01)),
+    url("/background_lightgray.png");
   line-height: 1.6;
   letter-spacing: -0.02em;
 }

@@ -139,7 +139,7 @@ export default function Home() {
               Portfólio de Projetos
             </h1>
             <span
-              className="ml-10 text-lg text-[#929191]"
+              className="ml-10 text-lg text-[#A8A7A7]"
               onDoubleClick={toggleNewProjectButton}
             >
               ...
