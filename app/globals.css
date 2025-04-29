@@ -4,27 +4,27 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 40% 98%;
+    --foreground: 222.2 47.4% 11.2%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222.2 47.4% 11.2%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 221 83% 53%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
+    --chart-1: 221 83% 53%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
@@ -32,26 +32,26 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222.2 47.4% 11.2%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 222.2 47.4% 11.2%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 222.2 47.4% 11.2%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
+    --primary: 221 83% 53%;
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 221 83% 53%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
+    --ring: 221 83% 53%;
+    --chart-1: 221 83% 53%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
@@ -79,6 +79,8 @@
 body {
   font-family: var(--font-primary);
   background-image: url("/background_lightgray.png");
+  line-height: 1.6;
+  letter-spacing: -0.02em;
 }
 
 .font-secondary {
@@ -89,53 +91,112 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .hover-scale {
+    @apply transition-transform duration-300 ease-out;
+  }
+  .hover-scale:hover {
+    @apply scale-105 transform;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    @apply -translate-y-1 transform shadow-lg;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  .hover-glow:hover {
+    @apply shadow-[0_0_15px_rgba(var(--primary),0.3)];
+  }
 }
 
 .header {
-  transition:
-    top 1.5s ease,
-    transform 1.5s ease;
+  @apply sticky top-0 z-50 bg-background/80 backdrop-blur-sm;
+  transition: all 0.3s ease-in-out;
+}
+
+.header.scrolled {
+  @apply shadow-md;
+}
+
+.button {
+  @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  @apply scale-105 transform;
+}
+
+.card {
+  @apply overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  @apply -translate-y-1 transform shadow-lg;
 }
 
 h1 {
-  font-weight: bolder;
-  font-size: 2.5rem;
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h2 {
-  font-weight: bolder;
+  font-family: var(--font-secondary);
+  font-weight: 600;
   padding-top: 0.5rem;
-  margin-bottom: 0.25rem;
-  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
   color: hsl(var(--foreground));
+  line-height: 1.3;
+  letter-spacing: -0.02em;
   @media (min-width: 768px) {
-    font-size: 1.75rem /* 20px */;
-    line-height: 1.75rem /* 28px */;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
 
 h3 {
-  font-weight: bold;
+  font-family: var(--font-secondary);
+  font-weight: 500;
   padding-top: 0.5rem;
-  padding-top: 0.25rem;
-  font-size: 1.45rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.75rem;
   color: hsl(var(--foreground));
+  line-height: 1.4;
   @media (min-width: 768px) {
-    font-size: 1.65rem /* 20px */;
-    line-height: 1.75rem /* 28px */;
+    font-size: 2rem;
+    line-height: 2.25rem;
   }
 }
 
 h4 {
-  font-weight: normal;
+  font-family: var(--font-primary);
+  font-weight: 500;
   padding-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
   color: hsl(var(--foreground));
-  font-weight: 300; /* Define um peso mais leve para a fonte */
+  line-height: 1.4;
   @media (min-width: 768px) {
-    font-size: 1.45rem; /* 20px */
-    line-height: 2rem; /* 28px */
+    font-size: 1.75rem;
+    line-height: 2rem;
   }
 }
 
@@ -170,33 +231,80 @@ h6 {
 }
 
 p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #333;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: hsl(var(--foreground) / 0.9);
 }
 
 .dialog {
-  max-width: 80rem; /* 1280px */
-  width: 60%; /* Ajustável */
-  color: var(--foreground);
-  background: var(--background);
+  max-width: 80rem;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  border-radius: var(--radius);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 .label {
   font-size: 1rem;
-  line-height: 1rem;
-  white-space: no-wrap;
-  color: #01050b;
+  line-height: 1.5;
+  font-weight: 500;
+  white-space: nowrap;
+  color: hsl(var(--foreground));
 }
 
 .dark .label {
-  color: #f1d5db;
+  color: hsl(var(--foreground));
 }
 
 .error {
   font-size: 0.875rem;
-  color: #de798a;
+  color: hsl(var(--destructive));
   margin-top: 0.25rem;
+}
+
+.grid-container {
+  @apply grid gap-6 p-4;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+}
+
+.project-grid {
+  @apply grid gap-8 p-6;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
+}
+
+.section {
+  @apply mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8;
+}
+
+.container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.prose {
+  @apply mx-auto max-w-prose leading-relaxed;
+}
+
+.aspect-card {
+  aspect-ratio: 16/9;
+  @apply w-full rounded-t-lg object-cover;
+}
+
+@media (max-width: 640px) {
+  .grid-container,
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    @apply px-4 py-8;
+  }
 }
 
 .input {
