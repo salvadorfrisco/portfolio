@@ -12,12 +12,14 @@ import {
   Draggable,
   DropResult,
 } from "@hello-pangea/dnd";
+import SplashScreen from "./components/SplashScreen";
 
 export default function Home() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { newProjectButton, toggleNewProjectButton } = useProject();
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -107,6 +109,10 @@ export default function Home() {
       setProjects(sortedProjects);
     }
   };
+
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
 
   if (loading) {
     return (
