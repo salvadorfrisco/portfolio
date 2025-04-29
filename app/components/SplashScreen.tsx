@@ -10,9 +10,9 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
     const timers = [
       setTimeout(() => setStep(1), 600), // S
       setTimeout(() => setStep(2), 1000), // F
-      setTimeout(() => setStep(3), 1400), // tech
-      setTimeout(() => setStep(4), 2000), // logo final
-      setTimeout(() => onFinish(), 2400), // fim
+      setTimeout(() => setStep(3), 1800), // tech
+      setTimeout(() => setStep(4), 2200), // logo final
+      setTimeout(() => onFinish(), 3600), // fim
     ];
     return () => timers.forEach(clearTimeout);
   }, [onFinish]);
@@ -37,28 +37,28 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
               <Image
                 src="/s.png"
                 alt="S"
-                width={72}
-                height={100}
+                width={74}
+                height={99}
                 className={`absolute left-0 top-0 transition-opacity duration-500 ${step >= 1 ? "opacity-100" : "opacity-0"}`}
               />
             )}
             {step >= 1 && (
               <Image
-                src="/f.png"
+                src="/tech.png"
                 alt="F"
-                width={54}
-                height={64}
-                className={`absolute left-20 top-0 transition-all duration-500 ${step >= 2 ? "opacity-100" : "opacity-10"} ${animateF ? "animate-[spin_0.6s_linear]" : ""}`}
+                width={105}
+                height={73}
+                className={`absolute left-28 top-0 transition-all duration-1000 ${step >= 2 ? "opacity-100" : "opacity-0"} ${animateF ? "animate-[spin_0.6s_linear]" : ""}`}
                 style={{ transformOrigin: "center center" }}
               />
             )}
             {step >= 2 && (
               <Image
-                src="/tech.png"
+                src="/f.png"
                 alt="tech"
-                width={106}
-                height={74}
-                className={`absolute left-28 top-2 transition-opacity duration-500 ${step === 2 ? "opacity-100" : "opacity-0"}`}
+                width={54}
+                height={63}
+                className={`absolute left-[74] top-[-1] transition-opacity duration-500 ${step === 2 ? "opacity-100" : "opacity-0"}`}
               />
             )}
           </>
@@ -70,7 +70,7 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
             alt="Logo SF tech"
             width={260}
             height={130}
-            className={`absolute left-0 top-0 transition-opacity duration-700 ${step === 4 ? "opacity-100" : "opacity-100"}`}
+            className={`duration-[5000ms] absolute left-0 top-0 transition-all ease-in-out ${step >= 3 ? "scale-100 opacity-100" : "scale-80 opacity-0"}`}
           />
         )}
       </div>
