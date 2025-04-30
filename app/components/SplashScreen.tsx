@@ -58,7 +58,7 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
                 alt="tech"
                 width={54}
                 height={63}
-                className={`absolute left-[74] top-[-1] transition-opacity duration-500 ${step === 2 ? "opacity-100" : "opacity-0"}`}
+                className={`absolute left-[44] top-[-3] transition-opacity duration-500 ${step === 2 ? "opacity-100" : "opacity-0"}`}
               />
             )}
           </>
