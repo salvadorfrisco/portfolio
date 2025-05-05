@@ -22,6 +22,19 @@ export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
+    const splashShown = localStorage.getItem("splashShown") === "true";
+    if (splashShown) {
+      setShowSplash(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!showSplash) {
+      localStorage.setItem("splashShown", "true");
+    }
+  }, [showSplash]);
+
+  useEffect(() => {
     const fetchProjects = async () => {
       try {
         const response = await fetch("/api/projects");

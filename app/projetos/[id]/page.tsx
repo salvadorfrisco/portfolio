@@ -22,7 +22,7 @@ export default function DetalhesProjeto({
 
   const handleBack = () => {
     setIsLoading(true);
-    router.push("/");
+    router.replace("/");
   };
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function DetalhesProjeto({
           throw new Error("Erro ao excluir projeto");
         }
 
-        router.push("/");
+        router.replace("/");
       } catch (err) {
         console.error(err);
         alert("Erro ao excluir projeto");

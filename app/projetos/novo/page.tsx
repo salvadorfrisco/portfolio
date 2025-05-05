@@ -47,7 +47,7 @@ export default function NovoProjeto() {
         throw new Error("Erro ao criar projeto");
       }
 
-      router.push("/");
+      router.replace("/");
     } catch (err) {
       console.error(err);
       setError("Erro ao criar projeto. Tente novamente.");
@@ -140,7 +140,7 @@ export default function NovoProjeto() {
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => router.push("/")}
+                onClick={() => router.replace("/")}
               >
                 Cancelar
               </Button>
