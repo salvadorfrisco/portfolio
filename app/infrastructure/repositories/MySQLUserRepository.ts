@@ -50,13 +50,14 @@ export class MySQLUserRepository implements IUserRepository {
 
   async create(user: User): Promise<User> {
     await this.pool.execute(
-      `INSERT INTO users (id, name, email, phone_number, photo_url) VALUES (?, ?, ?, ?, ?)`,
+      `INSERT INTO users (id, name, email, phone_number, photo_url, image_base64) VALUES (?, ?, ?, ?, ?, ?)`,
       [
         user.id,
         user.name,
         user.email,
         user.phoneNumber || null,
         user.photoUrl || null,
+        user.image_base64 || null,
       ],
     );
     return user;
@@ -64,12 +65,13 @@ export class MySQLUserRepository implements IUserRepository {
 
   async update(id: string, user: User): Promise<User> {
     await this.pool.execute(
-      `UPDATE users SET name = ?, email = ?, phone_number = ?, photo_url = ? WHERE id = ?`,
+      `UPDATE users SET name = ?, email = ?, phone_number = ?, photo_url = ?, image_base64 = ? WHERE id = ?`,
       [
         user.name,
         user.email,
         user.phoneNumber || null,
         user.photoUrl || null,
+        user.image_base64 || null,
         id,
       ],
     );

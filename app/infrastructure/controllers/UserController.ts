@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { id, name, email, phoneNumber, photoUrl } = body;
+    const { id, name, email, phoneNumber, photoUrl, image_base64 } = body;
 
     if (!id || !name || !email) {
       return NextResponse.json(
@@ -62,6 +62,7 @@ export async function POST(request: NextRequest) {
       email,
       phoneNumber,
       photoUrl,
+      image_base64,
     );
 
     return NextResponse.json(user, { status: 201 });
@@ -87,7 +88,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { name, email, phoneNumber, photoUrl } = body;
+    const { name, email, phoneNumber, photoUrl, image_base64 } = body;
 
     if (!name || !email) {
       return NextResponse.json(
@@ -102,6 +103,7 @@ export async function PUT(request: NextRequest) {
       email,
       phoneNumber,
       photoUrl,
+      image_base64,
     );
 
     return NextResponse.json(user);

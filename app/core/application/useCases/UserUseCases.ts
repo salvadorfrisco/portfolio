@@ -22,8 +22,16 @@ export class UserUseCases {
     email: string,
     phoneNumber?: string,
     photoUrl?: string,
+    image_base64?: string,
   ): Promise<User> {
-    const user = User.create(id, name, email, phoneNumber, photoUrl);
+    const user = User.create(
+      id,
+      name,
+      email,
+      phoneNumber,
+      photoUrl,
+      image_base64,
+    );
     return this.userRepository.create(user);
   }
 
@@ -33,8 +41,16 @@ export class UserUseCases {
     email: string,
     phoneNumber?: string,
     photoUrl?: string,
+    image_base64?: string,
   ): Promise<User> {
-    const user = User.create(id, name, email, phoneNumber, photoUrl);
+    const user = User.create(
+      id,
+      name,
+      email,
+      phoneNumber,
+      photoUrl,
+      image_base64,
+    );
     return this.userRepository.update(id, user);
   }
 
