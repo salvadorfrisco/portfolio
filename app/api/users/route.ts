@@ -14,6 +14,7 @@ import {
   POST as basePOST,
   PUT as basePUT,
   DELETE as baseDELETE,
+  PATCH as basePATCH,
 } from "../../infrastructure/controllers/UserController";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -44,3 +45,4 @@ export const GET = withCORS(baseGET);
 export const POST = withCORS(basePOST);
 export const PUT = withCORS(basePUT);
 export const DELETE = withCORS(baseDELETE);
+export const PATCH = withCORS(basePATCH);
